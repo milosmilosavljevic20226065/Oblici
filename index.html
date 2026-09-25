@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#030706">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Sketchpad · Oblaci</title>
+  <meta name="description" content="Mašina gleda oblake kroz kameru telefona i vidi u njima stvari — u estetici Sketchpada (1963).">
+  <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+  <video id="video" playsinline muted autoplay></video>
+  <canvas id="crtez" aria-label="Ekran"></canvas>
+  <div id="staklo" aria-hidden="true"></div>
+
+  <nav id="kontrole" hidden>
+    <div class="red">
+      <button class="taster" data-rezim="obrisi"><span data-natpis="OBRISI"></span></button>
+      <button class="taster upaljen" data-rezim="pareidolija"><span data-natpis="PAREIDOLIJA"></span></button>
+      <label class="klizac"><span id="masta-natpis" data-natpis="MAŠTA"></span><input id="masta" type="range" min="0" max="1" step="0.01" value="0.55"></label>
+    </div>
+    <div class="red">
+      <button class="taster upaljen" data-akcija="slika"><span data-natpis="SLIKA"></span></button>
+      <button class="taster" data-akcija="zamrzni"><span data-natpis="ZAMRZNI"></span></button>
+      <button class="taster" data-akcija="galerija"><span data-natpis="GALERIJA"></span></button>
+      <button class="taster" data-akcija="sacuvaj"><span data-natpis="SAČUVAJ"></span></button>
+    </div>
+  </nav>
+
+  <section id="pocetak">
+    <div class="kartica">
+      <h1>SKETCHPAD · OBLACI</h1>
+      <p class="pod">Mašina gleda svet kroz kameru i vidi stvari u oblicima.</p>
+      <p>Uperi telefon u nebo. U režimu <b>PAREIDOLIJA</b> mašina izdvoji oblake (ili mrlje, senke), pita svoje oko šta bi to moglo da bude, pa to i nacrta — docrta oblak do životinje, lica ili predmeta, ili u njega upiše ceo crtež. <b>Dodirni oblak</b> da pogleda baš njega. U režimu <b>OBRISI</b> cela slika postaje Sketchpad-ov crtež od svetlećih linija.</p>
+      <div class="dugmad">
+        <button class="taster veliko" data-akcija="kamera"><span data-natpis="UKLJUČI KAMERU"></span></button>
+        <button class="taster" data-akcija="galerija"><span data-natpis="SLIKA IZ GALERIJE"></span></button>
+        <button class="taster" data-akcija="proba"><span data-natpis="PROBA: NEBO"></span></button>
+      </div>
+      <p id="greska" class="greska" hidden></p>
+      <p class="sitno">MAŠTA: nisko — mašina vidi ono što je najverovatnije; visoko — sanja, bira daleka čitanja i hibride. Oko: DoodleNet (345 stvari). Ruka: sketch-rnn (Google Magenta) — modeli se skidaju sa interneta kad zatrebaju. Deo rada <i>Sketchpad · Duet</i>, po uzoru na Sketchpad (I. E. Sutherland, MIT, 1963).</p>
+    </div>
+  </section>
+
+  <input id="fajl" type="file" accept="image/*" hidden>
+
+  <script src="modeli/doodlenet.js"></script>
+  <script src="modeli/profili.js" onerror="window.PROFILI=null"></script>
+  <script src="js/font.js"></script>
+  <script src="js/geometrija.js"></script>
+  <script src="js/kategorije.js"></script>
+  <script src="js/prepoznavanje.js"></script>
+  <script src="js/mreza_skica.js"></script>
+  <script src="js/modeli.js"></script>
+  <script src="js/vid.js"></script>
+  <script src="js/oblaci.js"></script>
+</body>
+</html>
